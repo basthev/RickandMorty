@@ -1,0 +1,18 @@
+.cuerpo-de-lista{
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+.img-personaje{
+  width: 130px;
+  height: 130px;
+}
+.col-lg-4-p{
+  padding: 3%;
+  width: 25.33% !important ;
+  box-sizing: content-box;
+  background-color: black;
+}
+.ampliar{
+  height: 25vh;
+}

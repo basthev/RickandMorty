@@ -1,0 +1,12 @@
+#fondo{
+	position: fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height: 100vh;
+	z-index:-10;
+	background-color: white;
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
