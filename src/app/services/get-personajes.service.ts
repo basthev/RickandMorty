@@ -14,7 +14,7 @@ export class GetPersonajesService {
     this.url = Ruta.url;
    }
 
-  getPersonajes() {
-    return this.http.get(`${this.url}/character`)
+  getPersonajes(url) {
+    return this.http.get(`${url}/character`)
   }
 }
