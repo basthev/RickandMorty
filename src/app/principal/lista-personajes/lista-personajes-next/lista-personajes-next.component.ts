@@ -9,21 +9,28 @@ import { Ruta } from '../../../config';
   styleUrls: ['./lista-personajes-next.component.css']
 })
 export class ListaPersonajesNextComponent implements OnInit {
-   public url = Ruta;
-
+   public url = Ruta.url;
    public personajesJson
    constructor(private GetPersonajesService: GetPersonajesService, public NextPageService : NextPageService) {
-     this.GetPersonajesService.getPersonajes(`${this.url}/?page=${NextPageService.nextpage}`)
-     .subscribe(respuesta =>{
-       console.log("respuesta", respuesta["info"]["next"])
-
-       this.personajesJson = respuesta["results"];
-
-     })
 
    }
 
   ngOnInit(): void {
+    let normal:number
+
+    this.GetPersonajesService.pagina$.subscribe( (n) =>{
+      
+      this.GetPersonajesService.getPersonajes(`${this.url}/character/?page=${n}`)
+     .subscribe(respuesta =>{
+       console.log ()
+       console.log("respuesta", respuesta["info"]["next"])
+       console.log(respuesta)
+       this.personajesJson = respuesta["results"];
+       
+     
+     })
+    })
+
   }
 
 }

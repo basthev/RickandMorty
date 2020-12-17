@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class NextPageService {
 
-  nextpage:any ;
+  nextpage:any  = 2;
 
   constructor() { }
 }

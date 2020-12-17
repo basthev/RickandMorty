@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 
 import{HttpClient} from '@angular/common/http'
 
@@ -15,6 +15,8 @@ export class GetPersonajesService {
    }
 
   getPersonajes(url) {
-    return this.http.get(`${url}/character`)
+    return this.http.get(`${url}`)
   }
+
+  pagina$ = new EventEmitter<number>() ;
 }

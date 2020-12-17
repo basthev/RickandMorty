@@ -17,30 +17,82 @@ export class ListaPersonajesComponent implements OnInit {
   public personajesJson:any
   public url = Ruta.url;
   public paginas:number;
-
+  public botonext:boolean = false;
+  public estado:boolean = true;
+  public numero = 1 ;
+  public slock = document.createElement("li");
+  public bnext:any ;
+  public bprev:any ;
 
   constructor(public GetPersonajesService: GetPersonajesService, public NextPageService : NextPageService ) {
-    this.GetPersonajesService.getPersonajes(this.url)
-    .subscribe(respuesta =>{
-      console.log("respuesta", typeof(respuesta["results"]) )
-      this.personajesJson = respuesta["results"];
-      this.paginas = respuesta["info"]["pages"];
-    })
+
+
 
   }
 
   ngOnInit(): void {
+    if (this.numero <= 34) {
+      this.GetPersonajesService.getPersonajes(`${this.url}/character/?page=${this.numero}`)
+      .subscribe(respuesta =>{
+      console.log("respuesta", typeof(respuesta["results"]) )
+      this.personajesJson = respuesta["results"];
+      this.paginas = respuesta["info"]["pages"];
+      })
+    }
+      
+    
 
   }
 
-  nextpage(){
-    let next = document.getElementById("next")
-    this.NextPageService.nextpage = 1;
-    next.addEventListener("click", ()=>{
-      this.NextPageService.nextpage = this.NextPageService.nextpage + 1;
-    })
-  }
+    nextpagina(){
+      if(this.numero <= 34){
 
+      this.GetPersonajesService.pagina$.emit(this.sumar())
+      this.botonext = true;
+      this.estado = false;
+      console.log(this.numero)
+      console.log("funciona")
+    }
+      }
+      
+    returnpagina(){
+      this.GetPersonajesService.pagina$.emit( this.restar() )
+      this.botonext = true;
+      this.estado = false;
+      console.log(this.numero)
+      console.log("funciona")
+    }
+    sumar(){
+      if (this.numero == 34) {
+        this.numero == 34
+      }else{
+       return this.numero = this.numero + 1;
+      }
 
-}
+      
+    }
+
+    disabledboton(){
+      if (this.numero == 34 ) {
+      this.bnext = document.getElementById("next");
+      this.bnext.classList.add("disabled") 
+      
+      }
+
+      if(this.numero == 2){
+      this.bprev = document.getElementById("prev");
+      this.bprev.classList.remove("disabled")
+      }
+    }
+
+    restar(){
+      if (this.numero == 1) {
+
+      }else{
+        return this.numero = this.numero - 1;
+      }
+    }
+
+    
+} 
 
