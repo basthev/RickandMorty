@@ -1,6 +1,5 @@
 import { Component, OnInit, } from '@angular/core';
 import { GetPersonajesService } from '../../services/get-personajes.service';
-import { NextPageService } from '../../services/next-page.service'
 import { Ruta } from '../../config.js';
 
 
@@ -24,7 +23,7 @@ export class ListaPersonajesComponent implements OnInit {
   public bnext:any ;
   public bprev:any ;
 
-  constructor(public GetPersonajesService: GetPersonajesService, public NextPageService : NextPageService ) {
+  constructor(public GetPersonajesService: GetPersonajesService ) {
 
 
 
@@ -35,7 +34,7 @@ export class ListaPersonajesComponent implements OnInit {
     if (this.numero <= 34) {
       this.GetPersonajesService.getPersonajes(`${this.url}/character/?page=${this.numero}`)
       .subscribe(respuesta =>{
-      console.log("respuesta", typeof(respuesta["results"]) )
+      console.log("respuesta", respuesta["results"] )
       this.personajesJson = respuesta["results"];
       this.paginas = respuesta["info"]["pages"];
       })
@@ -100,12 +99,7 @@ export class ListaPersonajesComponent implements OnInit {
     //Funcionalidades paginacion
 
 
-    //Funcion de personaje
 
-    enviarPersonaje(url){
-      this.NextPageService.personajeUrl = url;
-      console.log(url)
-    }
 
 
 }

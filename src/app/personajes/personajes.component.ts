@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NextPageService } from '../services/next-page.service'
 import { GetPersonajesService } from '../services/get-personajes.service';
+import {ActivatedRoute} from '@angular/router'
+import { Ruta } from '../config.js';
 
 @Component({
   selector: 'app-personajes',
@@ -8,18 +9,29 @@ import { GetPersonajesService } from '../services/get-personajes.service';
   styleUrls: ['./personajes.component.css']
 })
 export class PersonajesComponent implements OnInit {
-  public personajeInfo:any
+  public personajeInfo:any;
+  public personajeCapitulos:any;
+  public url = Ruta.url;
+  public capitulos ;
 
-  constructor( public NextPageService: NextPageService, public GetPersonajesService: GetPersonajesService ) {}
+  constructor( public GetPersonajesService: GetPersonajesService, private _route: ActivatedRoute ) {
+    console.log(this._route.snapshot.paramMap.get('id'))
+  }
 
   ngOnInit(): void {
-    console.log(this.NextPageService.personajeUrl)
-    this.GetPersonajesService.getPersonajes(`${this.NextPageService.personajeUrl}`)
+    this.GetPersonajesService.getPersonajes(`${this.url}/character/${this._route.snapshot.paramMap.get('id')}`)
       .subscribe(respuesta =>{
-      console.log("respuesta", respuesta)
-      this.personajeInfo = respuesta;
+
+      this.personajeInfo = [respuesta];
+      this.personajeCapitulos = respuesta["episode"]
+      this.capitulos = this.personajeCapitulos.map(function(capitulo) {
+
+        return  capitulo = [ `capitulo ${capitulo.substr(40, 42)}`, capitulo]
+      })
+      console.log(this.capitulos)
       })
 
   }
+
 
 }

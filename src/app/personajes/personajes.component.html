@@ -1,15 +1,57 @@
 <app-header></app-header>
-<!-- <div class="cuerpo-de-lista">
+ <div class="cuerpo-de-lista ">
   <section class="row mx-auto text-center">
-     <div *ngFor="let personajes of personajesJson; let ultimoIndice = last" class="pt-3 col-lg-2 col-md-2 col-sm-2 text-center card border border-dark rounded shadow p-3 m-3 color">
-       <a href="{{ personajes.url }}" >
-         <div class="mx-auto ampliar">
-           <img  class="img-personaje rounded-circle"src="{{personajes.image}}">
-         </div>
-       </a>
-         <div class="mx-auto">
-           <h5>{{personajes.name}}</h5>
-         </div>
-     </div>
+    <div class="row">
+      <div *ngFor="let personaje of personajeInfo; let ultimoIndice = last" >
+        <table class="table table-dark">
+          <thead>
+            <tr>
+              <th colspan="2"><img src="{{personaje.image}}" alt=""></th>
+            </tr>
+            <tr>
+              <th th colspan="2">{{personaje.name}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Especie</td>
+              <td>{{personaje.species}}</td>
+
+            </tr>
+            <tr>
+              <td>Tipo</td>
+              <td>{{personaje.type}}</td>
+
+            </tr>
+            <tr>
+              <td>Genero</td>
+              <td>{{personaje.gender}}</td>
+
+            </tr>
+            <tr>
+              <td>Origen</td>
+              <td>{{personaje.origin.name}}</td>
+            </tr>
+            <tr>
+              <td>Localicacion</td>
+              <td>{{personaje.location.name}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="">
+        <div>
+          <h5>Lista de capitulos</h5>
+        </div>
+        <div>
+            <ul class="list-group list-group-flush lista">
+              <a href="{{episodios[1]}}" *ngFor="let episodios of capitulos; let ultimoIndice = last">
+                <li  class="list-group-item"> {{episodios[0]}}</li>
+              </a>
+            </ul>
+        </div>
+      </div>
+    </div>
+
  </section>
-</div> -->
+</div>
