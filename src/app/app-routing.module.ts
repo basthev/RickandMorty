@@ -5,7 +5,7 @@ import { PersonajesComponent } from './personajes/personajes.component';
 
 const routes: Routes = [
   {path: '', component:PrincipalComponent},
-  {path: 'Personajes', component:PersonajesComponent},
+  {path: 'personaje/:id', component:PersonajesComponent},
   {path: '**', pathMatch:'full', redirectTo:'' }
 ];
 

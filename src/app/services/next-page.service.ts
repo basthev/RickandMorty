@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NextPageService {
 
-  nextpage:any  = 2;
+  personajeUrl:string ="nombre url"
 
   constructor() { }
 }

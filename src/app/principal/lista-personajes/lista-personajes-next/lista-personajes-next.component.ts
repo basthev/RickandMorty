@@ -19,15 +19,14 @@ export class ListaPersonajesNextComponent implements OnInit {
     let normal:number
 
     this.GetPersonajesService.pagina$.subscribe( (n) =>{
-      
+
       this.GetPersonajesService.getPersonajes(`${this.url}/character/?page=${n}`)
      .subscribe(respuesta =>{
        console.log ()
        console.log("respuesta", respuesta["info"]["next"])
        console.log(respuesta)
        this.personajesJson = respuesta["results"];
-       
-     
+
      })
     })
 
