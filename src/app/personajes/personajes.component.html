@@ -45,7 +45,7 @@
         </div>
         <div>
             <ul class="list-group list-group-flush lista">
-              <a href="{{episodios[1]}}" *ngFor="let episodios of capitulos; let ultimoIndice = last">
+              <a  *ngFor="let episodios of capitulos; let ultimoIndice = last" [routerLink]="['/episodio', episodios[1]]" routerLinkActive="active">
                 <li  class="list-group-item"> {{episodios[0]}}</li>
               </a>
             </ul>

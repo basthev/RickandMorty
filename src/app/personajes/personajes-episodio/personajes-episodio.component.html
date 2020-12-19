@@ -1,0 +1,10 @@
+<div *ngFor="let personajes of personajecapInfo; let ultimoIndice = last" >
+  <a [routerLink]="['/personaje', personajes.id]" routerLinkActive="active"   >
+    <div class="mx-auto ampliar">
+      <img  class="img-personaje rounded-circle" src="{{personajes.image}}"  >
+    </div>
+  </a>
+    <div class="mx-auto">
+      <h5>{{personajes.name}}</h5>
+    </div>
+</div>

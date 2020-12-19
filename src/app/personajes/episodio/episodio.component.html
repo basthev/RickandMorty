@@ -1,0 +1,17 @@
+<app-header></app-header>
+<section>
+  <div class="container  " >
+    <div  *ngFor="let episodio of episodioInfo; let ultimoIndice = last" class="p-3">
+      <h2>{{ episodio.name }}</h2>
+      <h6>Fecha de publicacion: {{episodio.air_date}}</h6>
+      <h6>Episodio: {{episodio.episode}}</h6>
+      <h6>Personajes que aparecen:</h6>
+    </div>
+    <div class="row">
+      <div class="pt-3 col-lg-2 col-md-2 col-sm-2 text-center card border border-dark rounded shadow p-3 m-3 color col-lg-3" *ngFor="let idpersonaje of personaje">
+        <app-personajes-episodio [id]="idpersonaje" ></app-personajes-episodio>
+      </div>
+    </div>
+
+  </div>
+</section>

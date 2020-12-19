@@ -13,6 +13,8 @@ import { PersonajesComponent } from './personajes/personajes.component';
 import { HeaderComponent } from './principal/header/header.component';
 import { ListaPersonajesComponent } from './principal/lista-personajes/lista-personajes.component';
 import { ListaPersonajesNextComponent } from './principal/lista-personajes/lista-personajes-next/lista-personajes-next.component';
+import { EpisodioComponent } from './personajes/episodio/episodio.component';
+import { PersonajesEpisodioComponent } from './personajes/personajes-episodio/personajes-episodio.component';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { ListaPersonajesNextComponent } from './principal/lista-personajes/lista
     PersonajesComponent,
     HeaderComponent,
     ListaPersonajesComponent,
-    ListaPersonajesNextComponent
+    ListaPersonajesNextComponent,
+    EpisodioComponent,
+    PersonajesEpisodioComponent
   ],
   imports: [
     BrowserModule,

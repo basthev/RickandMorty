@@ -18,13 +18,14 @@ export class ListaPersonajesComponent implements OnInit {
   public paginas:number;
   public botonext:boolean = false;
   public estado:boolean = true;
-  public numero = 1 ;
+  public numero:any = 1 ;
   public slock:any ;
   public bnext:any ;
   public bprev:any ;
 
   constructor(public GetPersonajesService: GetPersonajesService ) {
 
+    //Funcion para cambiar numero de pagina
 
 
   }
@@ -39,6 +40,42 @@ export class ListaPersonajesComponent implements OnInit {
       this.paginas = respuesta["info"]["pages"];
       })
     }
+    let numeros2 = document.getElementsByClassName("numero")
+    let ncondicion = numeros2[0]
+
+    for (let i = 0; i < numeros2.length; i++) {
+
+      numeros2[i].addEventListener("click", (n)=>{
+        this.numero = [n.target]["0"].firstChild.nodeValue;
+        this.GetPersonajesService.pagina$.emit(this.numero);
+        this.estado = false;
+      })
+
+    }
+    this.GetPersonajesService.pagina$.subscribe( (n) =>{
+
+      let key = Number(numeros2[0].innerHTML) - n
+
+      switch (key) {
+        case 0:
+
+          break;
+        case 3:
+          this.slock = 1
+          return this.slock
+          break;
+        default:
+          break;
+      }
+
+      for (let i = 0; i < numeros2.length; i++) {
+
+        let calculo = Number(numeros2[0].innerHTML) + this.slock
+        console.log(numeros2[i])
+        numeros2[i].innerHTML = calculo.toString()
+      }
+
+    })
   }
 
     //funcion para definir el numero de la pagina
@@ -96,7 +133,7 @@ export class ListaPersonajesComponent implements OnInit {
         return this.numero = this.numero - 1;
       }
     }
-    //Funcionalidades paginacion
+
 
 
 

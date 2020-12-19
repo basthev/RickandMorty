@@ -15,7 +15,6 @@ export class PersonajesComponent implements OnInit {
   public capitulos ;
 
   constructor( public GetPersonajesService: GetPersonajesService, private _route: ActivatedRoute ) {
-    console.log(this._route.snapshot.paramMap.get('id'))
   }
 
   ngOnInit(): void {
@@ -26,9 +25,9 @@ export class PersonajesComponent implements OnInit {
       this.personajeCapitulos = respuesta["episode"]
       this.capitulos = this.personajeCapitulos.map(function(capitulo) {
 
-        return  capitulo = [ `capitulo ${capitulo.substr(40, 42)}`, capitulo]
+        return  capitulo = [ `capitulo ${capitulo.substr(40, 42)}`, capitulo.substr(40, 42) ]
       })
-      console.log(this.capitulos)
+
       })
 
   }
